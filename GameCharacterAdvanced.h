@@ -19,6 +19,7 @@ class GameCharacter
 		int attackPoints;
 		int defensePoints;
 		bool isAlive;
+		int lastSaveTime;
 
 	public:
 		GameCharacter(string, int, int, int);
@@ -37,5 +38,6 @@ class GameCharacter
 		friend bool operator>(GameCharacter, GameCharacter);
 		friend ostream& operator<<(ostream&, const GameCharacter&);
 		GameCharacter operator+(const GameCharacter&);
+		void displayDateTimeofLastSave();
 };
 #endif

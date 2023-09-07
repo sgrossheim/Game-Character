@@ -9,6 +9,7 @@
 #include <fstream>
 #include <iostream>
 #include <string>
+#include <ctime>
 using namespace std;
 /* Function Name: GameCharacter(string, int, int, int) (constructor)
  * Function Description: initializes character's attributes to specified input
@@ -276,4 +277,16 @@ GameCharacter GameCharacter::operator+(const GameCharacter& lhs)
 	temp.isAlive = true;
 
 	return temp;
+}
+
+void GameCharacter::displayDateTimeOfLastSave()
+{
+	//current date/time based on current system
+	time_t lastSaveTime = time(0);
+
+	// convert to string form
+	char* dt = ctime(&lastSaveTime)
+
+	// display to user
+	cout << "Date and time of last save: " << dt << endl;
 }
