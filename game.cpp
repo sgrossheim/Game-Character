@@ -1,4 +1,5 @@
 #include <iostream>
+#include <ctime>
 #include "GameCharacterAdvanced.h"
 using namespace std;
 
@@ -64,6 +65,9 @@ int main()
 
 		// Save character 3's attributes to a file
 		gc3.saveToFile("girl_boss_deets.txt");
+
+		// Display date and time of last save
+		gc3.displayDateTimeOfLastSave();
 		
 		// Create new character
 		GameCharacter newbie("Placeholder", 0, 0, 0);
@@ -73,6 +77,9 @@ int main()
 
 		// Goes on to play the boss
 		gc3.play(newbie);
+
+		// Display time since last saved
+		gc3.displayTimeSinceLastSave();
 	}
 
 	return 0;

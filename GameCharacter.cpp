@@ -278,15 +278,44 @@ GameCharacter GameCharacter::operator+(const GameCharacter& lhs)
 
 	return temp;
 }
-
+/* Function Name: displayDateTimeOfLastSave()
+ * Function Description: Display date of the last time the character was saved
+ * Return Value: void */
 void GameCharacter::displayDateTimeOfLastSave()
 {
 	//current date/time based on current system
 	time_t lastSaveTime = time(0);
 
 	// convert to string form
-	char* dt = ctime(&lastSaveTime)
+	char* dateTime = ctime(&lastSaveTime);
 
 	// display to user
-	cout << "Date and time of last save: " << dt << endl;
+	cout << "Date and time of last save: " << dateTime;
+	cout << "---------------------------------------------------" << endl;
 }
+
+/* Function Name: displayTimeSinceLastSave()
+ * Function Description: Calculates and displays the amount of time that passed
+ * 			 since the character was last saved
+ * Return Value: void */
+void GameCharacter::displayTimeSinceLastSave()
+{
+	// creates variable for current time
+	time_t now = time(0);
+	
+	// calculate the amount of time passed
+	std::time_t diffTime(now - lastSaveTime);
+	
+	// Convert to string form
+	tm* timePassed = localtime(&diffTime);
+
+	// Display to the user the time elapsed
+	cout << "Time elapsed since last save: ";
+	cout << timePassed -> tm_mday << "days and ";
+	cout << timePassed -> tm_hour << ":";
+	cout << timePassed -> tm_min << ":";
+	cout << timePassed -> tm_sec << endl;
+	cout << "---------------------------------------------------" << endl;
+		
+}
+
