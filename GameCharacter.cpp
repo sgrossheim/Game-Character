@@ -300,23 +300,17 @@ void GameCharacter::displayDateTimeOfLastSave()
  * Return Value: void */
 void GameCharacter::displayTimeSinceLastSave()
 {
-	// create variable for current time
+	// This is my last and final attempt to get this func to work
+	// My brain really really hurts and it is time to go to bed
+	
+	// Create variable for current time
 	time_t now = time(0);
 
 	// create variable for difference in time
-	time_t difftime;
+	time_t differenceInTime = std::difftime(now, lastSaveTime);
 
-	// calculate the amount of time passed
-	cout << "Time elapsed since last save: " << std::difftime(now, lastSaveTime) << " secs." << endl;
-	
-	// I tried my best on this function. I worked on this for HOURS... still couldn't get it to work
-	
-	/*
-	// Convert to string form and display time difference
-	char* timeDifference = ctime(&difftime);
+	cout << "Time since last save: " << differenceInTime << " secs." <<  endl;
 
-	cout << "Time elapsed since last save: " << timeDifference;
-	*/
 	cout << "---------------------------------------------------" << endl;
 }
 
