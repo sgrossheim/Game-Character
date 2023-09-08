@@ -19,7 +19,7 @@ class GameCharacter
 		int attackPoints;
 		int defensePoints;
 		bool isAlive;
-		int lastSaveTime;
+		time_t lastSaveTime;
 
 	public:
 		GameCharacter(string, int, int, int);
@@ -33,7 +33,7 @@ class GameCharacter
 		void attack(GameCharacter&);
 		void play(GameCharacter&);
 		void saveToFile(const string&) const;
-		void loadFromFile(const string&);
+		void loadFromFile(const string&); 
 		friend bool operator<(GameCharacter, GameCharacter);
 		friend bool operator>(GameCharacter, GameCharacter);
 		friend ostream& operator<<(ostream&, const GameCharacter&);

@@ -178,7 +178,7 @@ void GameCharacter::play(GameCharacter& player)
 /* Function Name: saveToFile(const string& filename) const
  * Function Description: Saves characters details to a file
  * Return Value: none */
-void GameCharacter::saveToFile(const string& filename) const
+void GameCharacter::saveToFile(const string& filename) const 
 {
 	ofstream outFile(filename);
 	if(outFile.fail())
@@ -281,12 +281,12 @@ GameCharacter GameCharacter::operator+(const GameCharacter& lhs)
 /* Function Name: displayDateTimeOfLastSave()
  * Function Description: Display date of the last time the character was saved
  * Return Value: void */
-void GameCharacter::displayDateTimeOfLastSave()
+void GameCharacter::displayDateTimeOfLastSave() 
 {
-	//current date/time based on current system
-	time_t lastSaveTime = time(0);
+	// Collect the last time saved
+	lastSaveTime = time(0);
 
-	// convert to string form
+	// convert lastSaveTime to string form to output
 	char* dateTime = ctime(&lastSaveTime);
 
 	// display to user
@@ -300,22 +300,23 @@ void GameCharacter::displayDateTimeOfLastSave()
  * Return Value: void */
 void GameCharacter::displayTimeSinceLastSave()
 {
-	// creates variable for current time
+	// create variable for current time
 	time_t now = time(0);
-	
-	// calculate the amount of time passed
-	std::time_t diffTime(now - lastSaveTime);
-	
-	// Convert to string form
-	tm* timePassed = localtime(&diffTime);
 
-	// Display to the user the time elapsed
-	cout << "Time elapsed since last save: ";
-	cout << timePassed -> tm_mday << "days and ";
-	cout << timePassed -> tm_hour << ":";
-	cout << timePassed -> tm_min << ":";
-	cout << timePassed -> tm_sec << endl;
+	// create variable for difference in time
+	time_t difftime;
+
+	// calculate the amount of time passed
+	cout << "Time elapsed since last save: " << std::difftime(now, lastSaveTime) << " secs." << endl;
+	
+	// I tried my best on this function. I worked on this for HOURS... still couldn't get it to work
+	
+	/*
+	// Convert to string form and display time difference
+	char* timeDifference = ctime(&difftime);
+
+	cout << "Time elapsed since last save: " << timeDifference;
+	*/
 	cout << "---------------------------------------------------" << endl;
-		
 }
 
