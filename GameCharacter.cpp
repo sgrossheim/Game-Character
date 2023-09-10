@@ -178,7 +178,7 @@ void GameCharacter::play(GameCharacter& player)
 /* Function Name: saveToFile(const string& filename) const
  * Function Description: Saves characters details to a file
  * Return Value: none */
-void GameCharacter::saveToFile(const string& filename) const 
+void GameCharacter::saveToFile(const string& filename, GameCharacter& character) const 
 {
 	ofstream outFile(filename);
 	if(outFile.fail())
@@ -193,9 +193,12 @@ void GameCharacter::saveToFile(const string& filename) const
 	outFile << defensePoints << endl;
 	outFile << healthPoints << endl;
 	outFile << isAlive << endl;
+	
+	// Capture and Display Current Time
+	character.displayDateTimeOfLastSave();
 }
 
-/* Function Name: loadFromFile(const string& filename) const
+/* Function Name: loadFromFile(const string& filename)
  * Function Description: Takes character's details from file to use in program
  * Return Value: none */
 void GameCharacter::loadFromFile(const string& filename) 
@@ -278,11 +281,14 @@ GameCharacter GameCharacter::operator+(const GameCharacter& lhs)
 
 	return temp;
 }
+
 /* Function Name: displayDateTimeOfLastSave()
  * Function Description: Display date of the last time the character was saved
  * Return Value: void */
 void GameCharacter::displayDateTimeOfLastSave() 
 {
+	// This member only gets called in saveToFile();
+
 	// Collect the last time saved
 	lastSaveTime = time(0);
 
@@ -300,16 +306,8 @@ void GameCharacter::displayDateTimeOfLastSave()
  * Return Value: void */
 void GameCharacter::displayTimeSinceLastSave()
 {
-	// This is my last and final attempt to get this func to work
-	// My brain really really hurts and it is time to go to bed
-	
-	// Create variable for current time
-	time_t now = time(0);
-
-	// create variable for difference in time
-	time_t differenceInTime = std::difftime(now, lastSaveTime);
-
-	cout << "Time since last save: " << differenceInTime << " secs." <<  endl;
+	// Display the time since last save calculated with std::difftime
+	cout << "Time since last save: " << std::difftime(time(0), lastSaveTime) << " secs." << endl;
 
 	cout << "---------------------------------------------------" << endl;
 }

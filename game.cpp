@@ -4,7 +4,7 @@
 using namespace std;
 
 int main()
-{
+{	
 	// Welcome the user
 	cout << "---------------------------------------------------" << endl;
 	cout << "Welcome to GameCharacterAdvanced!!" << endl;
@@ -24,15 +24,18 @@ int main()
 	 * 	> - 15, 30, 30 (Character 1 wins)
 	 */
 	
-	// Create first game character and display details
+	// Create first game character, display details & saveToFile
 	cout << "Here is your first character: " << endl << endl;
 	GameCharacter gc1("Mrs. Herath", 25, 30, 30);
 	cout << gc1;
+	gc1.saveToFile("Herath_details", gc1);
 
-	// Create second game character and display details
+
+	// Create second game character, display details & saveToFile
 	cout << "Here is your second character: " << endl << endl;
 	GameCharacter gc2("Mrs. Jenkins", 25, 30, 20);
 	cout << gc2;
+	gc2.saveToFile("Jenkins_details", gc2);
 
 	// Check who is stronger by using overloaded < and > operators
 	cout << "- Who is stronger? " << gc1.getName() << " or " << gc2.getName() << "?" << endl;
@@ -64,23 +67,22 @@ int main()
 		cout << gc3;
 
 		// Save character 3's attributes to a file
-		gc3.saveToFile("girl_boss_deets.txt");
-
-		// Display date and time of last save
-		gc3.displayDateTimeOfLastSave();
+		// This function also displays date and time of last save
+		gc3.saveToFile("girlBoss_details.txt", gc3);
 		
 		// Create new character
 		GameCharacter newbie("Placeholder", 0, 0, 0);
 
 		// Load character 3's attributes into newly made character
-		newbie.loadFromFile("girl_boss_deets.txt");
+		newbie.loadFromFile("girlBoss_details.txt");
 
 		// Goes on to play the boss
-		gc3.play(newbie);
+		newbie.play(newbie);
 
 		// Display time since last saved
 		gc3.displayTimeSinceLastSave();
 	}
+
 
 	return 0;
 }

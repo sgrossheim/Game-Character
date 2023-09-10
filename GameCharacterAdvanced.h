@@ -32,7 +32,7 @@ class GameCharacter
 		void takeDamage(int damage);
 		void attack(GameCharacter&);
 		void play(GameCharacter&);
-		void saveToFile(const string&) const;
+		void saveToFile(const string&, GameCharacter&) const;
 		void loadFromFile(const string&); 
 		friend bool operator<(GameCharacter, GameCharacter);
 		friend bool operator>(GameCharacter, GameCharacter);
